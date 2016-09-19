@@ -170,26 +170,31 @@ int main(int argc, char **argv)
 	// Main Loop
 	while (!glfwWindowShouldClose(window))
 	{
+        // Calculate delta time.
+        float dt = glfwGetTime();
+        // Reset the timer.
+        glfwSetTime(0);
+
 		// Clear the screen.
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClearColor(0.0, 0.0, 0.0, 0.0);
 
 
 		// rotate square
-		transform.Rotate(.0002f);
+		transform.Rotate(1.0f * dt);
 		
         // Here we get some input, and use it to move the camera
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-            cameraPosition.y += .0005;
+            cameraPosition.y += dt;
         }
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-            cameraPosition.x -= .0005;
+            cameraPosition.x -= dt;
         }
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-            cameraPosition.y -= .0005;
+            cameraPosition.y -= dt;
         }
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-            cameraPosition.x += .0005;
+            cameraPosition.x += dt;
         }
 
 
